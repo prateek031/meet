@@ -1,0 +1,23 @@
+{
+  "flutter": {
+    "platforms": {
+      "ios": {
+        "default": {
+          "projectId": "meet-ddd20",
+          "appId": "1:476455443267:ios:83032b1634d026cbd9edf6",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "meet-ddd20",
+          "configurations": {
+            "ios": "1:476455443267:ios:83032b1634d026cbd9edf6",
+            "web": "1:476455443267:web:8df8f57d98edf4bad9edf6"
+          }
+        }
+      }
+    }
+  }
+}
