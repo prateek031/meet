@@ -11,34 +11,34 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  // Controllers for email and password input
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  // Firebase Auth instance
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // Function to handle signup
+
   Future<void> _signup() async {
     try {
-      // Create a new user
+
       await _auth.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
 
-      // Show success message
+
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Signup Successful!')),
       );
 
-      // Navigate to Login Page
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const Homepage()),
       );
     } on FirebaseAuthException catch (e) {
-      // Handle errors during signup
+
       String message = 'An error occurred. Please try again.';
       if (e.code == 'weak-password') {
         message = 'The password is too weak.';
@@ -66,7 +66,7 @@ class _SignupPageState extends State<SignupPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Email TextFormField
+
             TextFormField(
               controller: emailController,
               decoration: const InputDecoration(
@@ -77,25 +77,25 @@ class _SignupPageState extends State<SignupPage> {
             ),
             const SizedBox(height: 16.0),
 
-            // Password TextFormField
+
             TextFormField(
               controller: passwordController,
               decoration: const InputDecoration(
                 labelText: 'Password',
                 border: OutlineInputBorder(),
               ),
-              obscureText: true, // Hide password
+              obscureText: true, 
             ),
             const SizedBox(height: 16.0),
 
-            // Signup Button
+
             ElevatedButton(
               onPressed: _signup,
               child: const Text('Signup'),
             ),
             const SizedBox(height: 16.0),
 
-            // Navigation to Login Page
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

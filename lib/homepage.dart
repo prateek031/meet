@@ -16,22 +16,22 @@ class _HomepageState extends State<Homepage> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // Function to handle login
+
   Future<void> _login() async {
     try {
-      // Attempt to sign in with Firebase
+
       await _auth.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
 
-      // Navigate to the Home Page on successful login
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const Home()),
       );
     } on FirebaseAuthException catch (e) {
-      // Handle errors during login
+
       print("This is the error$e");
       String message = 'An error occurred. Please try again.';
       if (e.code == 'user-not-found') {
@@ -40,7 +40,7 @@ class _HomepageState extends State<Homepage> {
         message = 'Incorrect password.';
       }
 
-      // Show error message
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(message)),
       );
@@ -58,7 +58,7 @@ class _HomepageState extends State<Homepage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Email TextField
+
             TextFormField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
@@ -68,28 +68,28 @@ class _HomepageState extends State<Homepage> {
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 20), // Space between fields
+            const SizedBox(height: 20), 
 
-            // Password TextField
+
             TextFormField(
               controller: _passwordController,
-              obscureText: true, // Hides password input
+              obscureText: true, 
               decoration: const InputDecoration(
                 labelText: "Password",
                 hintText: "Enter your password",
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 30), // Space for the button
+            const SizedBox(height: 30), 
 
-            // Login Button
+
             ElevatedButton(
               onPressed: _login,
               child: const Text("Login"),
             ),
-            const SizedBox(height: 20), // Space before "Sign Up" text
+            const SizedBox(height: 20), 
 
-            // Navigate to SignUp Page
+
             GestureDetector(
               onTap: () {
                 Navigator.push(
